@@ -71,6 +71,20 @@ body {
 
      ?>
     </div>
+
+    <div>
+        <p>The current date and time is</p>
+        <?php
+            $day = date("d");
+            $month = date("M");
+            $year = date("Y");
+            $hour = date("h");
+            $minute = date("i");
+            $sec = date("s");
+
+            echo "<h1> $day $month $year, $hour:$minute:$sec</h1>";
+        ?>
+    </div>
   
 </body>
 
