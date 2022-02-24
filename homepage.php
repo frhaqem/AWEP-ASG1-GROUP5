@@ -59,17 +59,17 @@ body {
         <a href="index.php">Logout</a>
     </div>
   
-  <?php 
-    $uname = $_POST["user"];
-    $pass = $_POST["pass"];
-
-    echo "welcome" . " $uname"; 
-
-   ?>
+  
   
 <!--   main body -->
    <div id="main">
+    <?php 
+        $uname = $_POST["user"];
+        $pass = $_POST["pass"];
 
+        echo "Welcome" . " $uname"; 
+
+     ?>
     </div>
   
 </body>
@@ -82,9 +82,11 @@ body {
 <script>
 function openNav() {
   document.getElementById("sideNav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
 }
 
 function closeNav() {
   document.getElementById("sideNav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
 }
 </script>
