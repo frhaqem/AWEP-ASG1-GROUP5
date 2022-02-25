@@ -132,7 +132,7 @@ img{
  
 <div id="sideNav" class="sideNav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="dashbord.php">Dashboard</a>
+        <a href="dashboard.php">Dashboard</a>
 
         <a href="#">Settings</a>
         <a href="index.php">Logout</a>
