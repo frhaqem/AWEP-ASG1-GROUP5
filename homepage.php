@@ -11,7 +11,6 @@ body {
 
 img{
   text-align: center;
-
   width: 400px;
   height: 250px;
 }
@@ -25,6 +24,11 @@ img{
   
 }
 
+#entosp{
+  text-align: center;
+  margin-left: 30%;
+}
+
 #line{
   border: 1px solid black;
   
@@ -33,7 +37,7 @@ img{
 #cap{
   border: 1px solid black;
   display: inline-block;
-  height: 500px;
+  height: 400px;
   width: 40%;
 }
 #pb{
@@ -54,7 +58,7 @@ img{
 
 #t5{
   width: 100%;
-  height:77%;
+  height:76%;
 }
 
 #last5{
@@ -129,13 +133,13 @@ img{
 <div id="sideNav" class="sideNav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="dashbord.php">Dashboard</a>
-        <a href="#">Home</a>
+
         <a href="#">Settings</a>
         <a href="index.php">Logout</a>
     </div>
 
   <!-- logo -->
-<div id="pb"s>
+<div id="pb">
   <img src="pblogo.png">
 </div>
 
@@ -196,7 +200,9 @@ img{
         </tr>
       </table>
 
-      <button id="entosp">Enter</button>
+      <br>
+      <br>
+      <button id="entosp">Enter Politeknik Brunei</button>
     </div>
 
     <!-- last 5 login -->
@@ -249,9 +255,8 @@ img{
 
 
 <script>
-   
-  var count;
-  count = localStorage.getItem("count");
+  var count = 75;
+  // count = parseInt(localStorage.getItem("count"));
   
 
 // navigation scripts
@@ -272,14 +277,19 @@ function closeNav() {
 }
 
 function enterosp() {
-  count = count+1
-  console.log(count)
+
+  if (count =>75) {
+    alert("Full capacity reached")
+  }
+  else{
+    count = count+1;
+      }
+  
+  console.log(count);
   document.getElementById("count").innerHTML = count;
-  parseInt(localStorage.setItem("count", count));
 }
 
 document.getElementById("entosp").addEventListener("click", enterosp);
-
 
 
 </script>
