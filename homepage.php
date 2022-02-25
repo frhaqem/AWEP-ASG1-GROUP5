@@ -4,6 +4,67 @@
 <style>
 body {
   font-family: "Lato", sans-serif;
+  background-color: #b3ccff;
+}
+
+#main{
+  font-size: 28px;
+  font-weight: bold;
+  display: inline-block;
+  
+}
+
+#line{
+  border: 1px solid black;
+  
+}
+
+#cap{
+  border: 1px solid black;
+  display: inline-block;
+  height: 500px;
+  width: 40%;
+}
+#pb{
+  text-align: center;
+}
+
+img{
+  text-align: center;
+
+  width: 400px;
+  height: 250px;
+}
+
+#time{
+  
+  display: inline-block;
+  float: right;
+}
+
+#t5,th,td{
+  border: 1px solid black ;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+#t5{
+  width: 100%;
+  height:77%;
+}
+
+#last5{
+  border: 1px solid black;
+  height: 300px;
+  width: 40%;
+  float: right;
+  display :inline-block ;
+  justify-content: flex-end;
+}
+
+#id{
+  width: 50px;
+  height: 50px;
 }
 
 .sideNav {
@@ -15,7 +76,7 @@ body {
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.2s;
   padding-top: 60px;
 }
 
@@ -47,11 +108,18 @@ body {
 </style>
   
 <body>
-  
-<!--   side navigation  -->
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Politeknik Brunei </span>
 
-    <div id="sideNav" class="sideNav">
+  
+  <!--   side navigation  -->
+ <span style="font-size:30px;cursor:pointer" onclick="openNav()"> &#9776;</span>
+ <!-- <h1 style="font-size: 48px; font-weight: bolder; text-align: center;"> Politeknik Brunei </h1> -->
+  
+
+<div id="pb"s>
+  <img src="pblogo.png">
+</div>
+ 
+<div id="sideNav" class="sideNav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="#">Dashboard</a>
         <a href="#">Home</a>
@@ -59,9 +127,9 @@ body {
         <a href="index.php">Logout</a>
     </div>
   
-  
-  
 <!--   main body -->
+
+<div>
    <div id="main">
     <?php 
         $uname = $_POST["user"];
@@ -71,10 +139,12 @@ body {
 
      ?>
     </div>
+    <br>
 
-    <div>
-        <p>The current date and time is</p>
+    <div id="time">
+        <p style="font-weight: bold;">Date & time logged in:</p>
         <?php
+        date_default_timezone_set('Asia/Brunei');
             $day = date("d");
             $month = date("M");
             $year = date("Y");
@@ -85,7 +155,53 @@ body {
             echo "<h1> $day $month $year, $hour:$minute:$sec</h1>";
         ?>
     </div>
-  
+</div>
+    <br><br><br><br><br><br>
+
+    <div id="line"></div>
+    <br>
+    <div id="cap">
+      <h2 style="text-align: center;">Current capacity:</h2>
+    </div>
+
+    <div id="last5"> 
+      <h2 style="text-align: center;">Last 5 logged-in:</h2>
+
+      <table id="t5">
+        <tr>
+          <th>Name</th>
+          <th>Date & Time</th> 
+        </tr>
+
+        <tr>
+          <td>Zam</td>
+          <td>25 Feb 2022, 03:21:10</td>
+        </tr>
+
+        <tr>
+          <td>Far</td>
+          <td>25 Feb 2022, 03:17:09</td>
+        </tr>
+
+        <tr>
+          <td>Han</td>
+          <td>25 Feb 2022, 02:59:18</td>
+        </tr>
+
+        <tr>
+          <td>Adam</td>
+          <td>25 Feb 2022, 02:47:20</td>
+        </tr>
+
+        <tr>
+          <td>Danish</td>
+          <td>25 Feb 2022, 02:32:54</td>
+        </tr>
+      </table>
+    </div>
+
+
+
 </body>
 
 
@@ -96,11 +212,16 @@ body {
 <script>
 function openNav() {
   document.getElementById("sideNav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
+  document.getElementById("main").style.marginLeft = "250px"
+  document.getElementById("pb").style.marginLeft = "250px";
+  document.getElementById("cap").style.marginLeft = "250px";
+
 }
 
 function closeNav() {
   document.getElementById("sideNav").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
+  document.getElementById("pb").style.marginLeft = "0";
+  document.getElementById("cap").style.marginLeft = "0";
 }
 </script>
