@@ -2,10 +2,21 @@
 <html>
  
 <style>
+
+  /*tags css*/
 body {
   font-family: "Lato", sans-serif;
   background-color: #b3ccff;
 }
+
+img{
+  text-align: center;
+
+  width: 400px;
+  height: 250px;
+}
+
+/*ID css*/
 
 #main{
   font-size: 28px;
@@ -27,13 +38,6 @@ body {
 }
 #pb{
   text-align: center;
-}
-
-img{
-  text-align: center;
-
-  width: 400px;
-  height: 250px;
 }
 
 #time{
@@ -67,6 +71,12 @@ img{
   height: 50px;
 }
 
+#captable{
+  width: 100%;
+
+}
+
+/*navigation css*/
 .sideNav {
   height: 100%;
   width: 0;
@@ -115,18 +125,21 @@ img{
  <!-- <h1 style="font-size: 48px; font-weight: bolder; text-align: center;"> Politeknik Brunei </h1> -->
   
 
-<div id="pb"s>
-  <img src="pblogo.png">
-</div>
  
 <div id="sideNav" class="sideNav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Dashboard</a>
+        <a href="dashbord.php">Dashboard</a>
         <a href="#">Home</a>
         <a href="#">Settings</a>
         <a href="index.php">Logout</a>
     </div>
-  
+
+  <!-- logo -->
+<div id="pb"s>
+  <img src="pblogo.png">
+</div>
+
+
 <!--   main body -->
 
 <div>
@@ -137,10 +150,13 @@ img{
 
         echo "Welcome" . " $uname"; 
 
+
+
      ?>
     </div>
     <br>
 
+<!-- time -->
     <div id="time">
         <p style="font-weight: bold;">Date & time logged in:</p>
         <?php
@@ -158,11 +174,32 @@ img{
 </div>
     <br><br><br><br><br><br>
 
+    <!-- line -->
     <div id="line"></div>
     <br>
+
+    <!-- CAPACITY -->
     <div id="cap">
-      <h2 style="text-align: center;">Current capacity:</h2>
+      <h2 style="text-align: center;">Current capacity: <p id="count"></p></h2>
+
+      <table id="captable">
+        <tr>
+          <th>No.</th>
+          <th>Name</th>
+          <th>Date & Time</th>
+        </tr>
+
+        <tr>
+          <td>1</td>
+          <td>Zam</td>
+          <td>25 Feb 2022, 03:21:10</td>
+        </tr>
+      </table>
+
+      <button id="entosp">Enter</button>
     </div>
+
+    <!-- last 5 login -->
 
     <div id="last5"> 
       <h2 style="text-align: center;">Last 5 logged-in:</h2>
@@ -209,10 +246,19 @@ img{
   
 </html>
 
+
+
 <script>
+   
+  var count;
+  count = localStorage.getItem("count");
+  
+
+// navigation scripts
+
 function openNav() {
   document.getElementById("sideNav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px"
+  document.getElementById("main").style.marginLeft = "250px";
   document.getElementById("pb").style.marginLeft = "250px";
   document.getElementById("cap").style.marginLeft = "250px";
 
@@ -224,4 +270,16 @@ function closeNav() {
   document.getElementById("pb").style.marginLeft = "0";
   document.getElementById("cap").style.marginLeft = "0";
 }
+
+function enterosp() {
+  count = count+1
+  console.log(count)
+  document.getElementById("count").innerHTML = count;
+  parseInt(localStorage.setItem("count", count));
+}
+
+document.getElementById("entosp").addEventListener("click", enterosp);
+
+
+
 </script>
