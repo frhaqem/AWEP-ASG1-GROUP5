@@ -283,7 +283,7 @@ function enterosp() {
   }
   else{
     count = count+1;
-      }
+    }
   
   console.log(count);
   document.getElementById("count").innerHTML = count;
