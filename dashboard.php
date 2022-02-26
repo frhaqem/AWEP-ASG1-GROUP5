@@ -93,6 +93,17 @@ img{
 
   <h3> <a href="https://form.jotform.com/220081663672050">Update your health status</a> </h3>
 </div>
+    
+<!--     upload files  -->
+<div id="upload">
+<form action="upload.php" method="POST" enctype="mutltipart/form-data">
+
+    Please upload your file here </br><br>
+
+    <input type="file" name="file">
+    <button type="submit" name="submit">UPLOAD</button>
+</form>
+</div>
 
 </body>
 </html>
