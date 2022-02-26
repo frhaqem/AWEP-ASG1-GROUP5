@@ -27,8 +27,27 @@ img{
   text-align: center;
   border: 1px solid black;
   width: 40%;
-  margin-left: 30%;
+  margin-left: 5%;
+  margin-top: -16%;
+
 }
+
+#ticket{
+  text-align: center;
+  border: 1px solid black;
+  width: 40%;
+  margin-left: 5%;
+  margin-bottom: 40%;
+}
+
+#ticketForm{
+  text-align: center;
+  border: 1px solid black;
+  width: 40%;
+  margin-left: 53%; 
+
+}
+
 
 .sideNav {
   height: 100%;
@@ -60,6 +79,11 @@ img{
   font-size: 36px;
   margin-left: 50px;
 }
+
+.error {
+color: #FF0000;
+}
+
 @media screen and (max-height: 450px) {
   .sideNav {padding-top: 15px;}
   .sideNav a {font-size: 18px;}
@@ -83,27 +107,146 @@ img{
     <a href="index.php">Logout</a>
 </div>
 
+
+<div id="ticketForm">
+
+<?php
+
+//define variables 
+$name = $_POST['name'];
+$studid  = $_POST['studid'];
+$floor  = $_POST['floor'];
+$room  = $_POST['room'];
+$health  = $_POST['health'];
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (empty($_POST['name'])) {
+      $nameErr = "Field should not be empty!";
+    } else {
+      $name = $_POST['name'];
+    }
+
+    if (empty($_POST['studid'])) {
+        $studidErr = "Field should not be empty!";
+      } else {
+        $studid = $_POST['studid'];
+      }
+
+    if(!empty($_POST['floor'])) {
+        $selected = $_POST['floor'];
+      
+    }
+
+    if(!empty($_POST['room'])) {
+        $selected = $_POST['room'];
+      
+    }
+
+    if(!empty($_POST['health'])) {
+        $health = $_POST['health'];
+    }
+}
+
+?>
+
+<h3>Please fill in before entering OSP</h3>
+<form action="dashboard.php" method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
+
+<p><span class="error">* required field</span></p>
+
+Name: <input type="text" name="name" value="<?php echo $name?>">
+<span class="error">*</span>
+
+<br><br>
+
+Student ID: <input type="text" name="studid" value="<?php echo $studid?>">
+<span class="error">*</span>
+<br><br>
+
+Floor: 
+<select name="floor" id="floor">
+    <option value="Select">Select</option>
+    <option value="Level 5">Level 5</option>
+    <option value="Level 6">Level 6</option>
+    <option value="Level 7">Level 7</option>
+    <option value="Level 8">Level 8</option>
+    <option value="Level 9">Level 9</option>
+</select>
+
+<br><br>
+
+Room: 
+<select name="room" id="room">
+    <option value="Select">Select</option>
+    <option value="Room 5.03">Room 5.03</option>
+    <option value="Room 5.04">Room 5.04</option>
+    <option value="Room 6.03">Room 6.03</option>
+    <option value="Room 6.04">Room 6.04</option>
+    <option value="Room 7.03">Room 7.03</option>
+    <option value="Room 7.04">Room 7.04</option>
+    <option value="Room 8.03">Room 8.03</option>
+    <option value="Room 8.03">Room 8.04</option>
+    <option value="Room 9.03">Room 9.03</option>
+    <option value="Room 9.03">Room 9.04</option>
+</select>
+
+<br><br>
+
+Have you updated your health status?
+<select name="health" id="health">
+    <option value="Select">Select</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+</select>
+
+
+<br><br>
+
+<input type="submit" value="Submit" name="submit">
+
+<br>
+
+</form>
+</div>
+
 <div id="main">
   <h3>Student Name:</h3>
-  <p>Muhammad Adam Danish bin Shukri</p>
-  <!-- <h3>Student ID:</h3>
-  <P>20FTT1452</P> -->
+  <?php echo $name ?>
+  <h3>Student ID:</h3>
+  <?php echo $studid ?>
   <h3>Account Created:</h3>
   <p>26/2/2021</p>
 
   <h3> <a href="https://form.jotform.com/220081663672050">Update your health status</a> </h3>
 </div>
-    
-<!--     upload files  -->
-<div id="upload">
-<form action="upload.php" method="POST" enctype="mutltipart/form-data">
 
-    Please upload your file here </br><br>
+<br>
 
-    <input type="file" name="file">
-    <button type="submit" name="submit">UPLOAD</button>
-</form>
+
+<div id="ticket" action ="dashboard.php" method="get">
+<h3>Here is your ticket! Please take a screenshot before entering PB.</h3>
+
+<?php
+
+echo "Name:"." ".$name;
+echo "<br><br>";
+echo "Student ID:"." ".$studid;
+echo "<br><br>";
+echo "Floor:"." ".$floor;
+echo "<br><br>";
+echo "Room:"." ".$room;
+echo "<br><br>";
+echo "Updated health status:"." ".$health;
+echo "<br><br>";
+
+?>
 </div>
+
+
+
+
 
 </body>
 </html>
