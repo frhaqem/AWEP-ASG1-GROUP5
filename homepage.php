@@ -135,7 +135,7 @@ img{
         <a href="dashboard.php">Dashboard</a>
 
         <a href="#">Settings</a>
-        <a href="index.php">Logout</a>
+        <a href="login.php">Logout</a>
     </div>
 
   <!-- logo -->
